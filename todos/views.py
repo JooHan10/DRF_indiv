@@ -56,15 +56,15 @@ class MockView(APIView):
         return Response("get 요청")
 
 
-class ToDoCompleteView(APIView):
-    # permission_classes = [permissions.IsAuthenticated]
-    def put(self, request, todo_id):
-        todos = get_object_or_404(ToDoList, id=todo_id)
-        if request.user == todos.user:
-            serializer = ToDoSerializer(todos, data=request.data)
-            if serializer.is_valid():
-                if request.data.get('is_complete') == "True":
-                    serializer.save(completion_at = datetime.datetime.now())
-                    return Response(serializer.data, status=status.HTTP_200_OK)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# class ToDoCompleteView(APIView):
+#     # permission_classes = [permissions.IsAuthenticated]
+#     def put(self, request, todo_id):
+#         todos = get_object_or_404(ToDoList, id=todo_id)
+#         if request.user == todos.user:
+#             serializer = ToDoSerializer(todos, data=request.data)
+#             if serializer.is_valid():
+#                 if request.data.get('is_complete') == "True":
+#                     serializer.save(completion_at = datetime.datetime.now())
+#                     return Response(serializer.data, status=status.HTTP_200_OK)
+#             else:
+#                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
