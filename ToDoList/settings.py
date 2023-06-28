@@ -76,7 +76,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "todolist.urls"
+ROOT_URLCONF = "ToDoList.urls"
 
 TEMPLATES = [
     {
